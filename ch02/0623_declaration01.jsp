@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Scripting Tag 2</title>
+<title>Declaration01.jsp</title>
 </head>
 <body>
 	<!-- 선언문 태그를 작성
@@ -15,8 +15,5 @@
 		//스크립트릿 태그 작성
 		out.println("Value of the variable is : " + data);
 	%>
-	
-	
-	
 </body>
 </html>
