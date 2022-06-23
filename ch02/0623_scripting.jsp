@@ -24,8 +24,9 @@
 	<%
 		//스크립트릿 태그(자바 로직 코드 작성)
 		//지역변수 i를 사용하고 1부터 3까지 1씩 증가
+		//out은 JSP의 기본 객체(화면에 출력 대상 문자열을 출력)
 		for(int i = 1; i <= count; i++){
-			out.println("Java Server Page : " + i + "<br/>");
+			out.println("Java Server Page : " + i + "<br />");
 		}
 	%>
 	<!-- 표현문 태그. 선언문의 메소드 호출 -> 소문자로 변환하여 리턴) -->
