@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Scripting Tag 3</title>
+<title>Declaration02.jsp</title>
 </head>
 <body>
 	<%!
