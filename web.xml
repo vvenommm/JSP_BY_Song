@@ -1,33 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<web-app>
-	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.htm</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
-	</welcome-file-list>
-	<!-- 오류가 나면 오류 타입에 맞춰 오류 처리 jsp로 매핑 -->
-
-	<!-- 404 : page not found. URL에 해당되는 jsp가 없음 -->
-	<error-page>
-		<error-code>404</error-code>
-		<location>/error/error404.jsp</location>
-	</error-page>
-
-	<!-- 프로그래밍 오류 -->
-	<error-page>
-		<error-code>500</error-code>
-		<location>/error/error500.jsp</location>
-	</error-page>
-	
-<!-- 	exception 타입별 오류 페이지 지정 -->
-	<error-page>
-		<exception-type>java.lang.NullPointerException</exception-type>
-		<location>/error/errorNullPointer.jsp</location>
-	</error-page>
-	
-	
-</web-app>
-	
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page errorPage="./viewErrorMessage.jsp" %>
+<!DOCTYPE html>
+<html>
+<head>
+<title>목적 : 파라미터 출력</title>
+</head>
+<body>
+<!-- readParameterNoErrorPage.jsp?name=후후리 -->
+<!-- 클라이언트(크롬), 서버(톰캣) -->
+<!-- toUpperCase() 대문자로 변환 -->
+<!-- /readParameterNoErrorPage.jsp => 오류 -> null을 대문자로 변환불가 -->
+name 파라미터 값 : <%=request.getParameter("name").toUpperCase()%>
+<!--
+	오류 처리 방법
+	1. page 디렉티브의 errorPage 속성에 지정한 오류 페이지 (우선순위1)
+		- 전용 오류 페이지가 필요한 경우
+	2. web.xml의 exception-type (우선순위2)
+		- 별도로 처리해야 하는 exception(심각할 때..)
+	3. web.xml의 error-code (우선순위3)
+		- 범용적인(자주 발생) 오류 코드(404, 500)
+-->
+</body>
+</html>
