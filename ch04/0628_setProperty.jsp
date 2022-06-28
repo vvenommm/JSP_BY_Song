@@ -14,9 +14,5 @@
 	<p>아이디 : <%=person.getId() %></p> 
 	<p>이르음 : <%=person.getName() %></p> 
 
-	<%
-		
-	%>
-	
 </body>
 </html>
