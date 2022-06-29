@@ -42,7 +42,9 @@
 				%>
 <!-- 					열별 처리 -->
 					<div class="col-md-4">
-					
+						<h3><%=product.getpName() %></h3>
+						<p><%=product.getDescription() %></p>
+						<p><%=product.getUnitPrice() %>원</p>
 					</div>						
 				<%
 					}
