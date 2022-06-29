@@ -46,19 +46,19 @@ public class ProductRepository {
 		Product notebook = new Product("P1235", "LG PC 그램", 1500000);
 		
 		//상품 설명
-		phone.setDescription("13.3-inch, IPS LED display, 5rd Generation Intel Core processors");
+		notebook.setDescription("13.3-inch, IPS LED display, 5rd Generation Intel Core processors");
 		
 		//분류
-		phone.setCategory("Notebook");
+		notebook.setCategory("Notebook");
 		
 		//제조사
-		phone.setManufacturer("LG");
+		notebook.setManufacturer("LG");
 		
 		//재고 수
-		phone.setUnitsInStock(1000);
+		notebook.setUnitsInStock(1000);
 		
 		//신상품 or 중고품 or 재생품
-		phone.setCondition("Refurbished");
+		notebook.setCondition("Refurbished");
 		
 		/////////////////////////////////////////노트북 등록 끝////////////////////////////////////////////
 		
@@ -71,19 +71,19 @@ public class ProductRepository {
 		Product tablet = new Product("P1236", "Galaxy Tab S", 900000);
 		
 		//상품 설명
-		phone.setDescription("212.8*125.5*6.6m, Super AMOLED display, Octa-Core processor");
+		tablet.setDescription("212.8*125.5*6.6m, Super AMOLED display, Octa-Core processor");
 		
 		//분류
-		phone.setCategory("Tablet");
+		tablet.setCategory("Tablet");
 		
 		//제조사
-		phone.setManufacturer("Samsung");
+		tablet.setManufacturer("Samsung");
 		
 		//재고 수
-		phone.setUnitsInStock(1000);
+		tablet.setUnitsInStock(1000);
 		
 		//신상품 or 중고품 or 재생품
-		phone.setCondition("Old");
+		tablet.setCondition("Old");
 		
 		/////////////////////////////////////////태블릿 등록 끝////////////////////////////////////////////
 		
@@ -99,4 +99,18 @@ public class ProductRepository {
 		return listOfProducts;
 	}
 	
+	//상품 상세보기
+	//listOfProducts 변수에 저장된 3개(이상)의 상품 목록 중 선택 상품의 아이디와 일치하는 정보 가져오는 메소드
+	public Product getProductById(String productId) {
+		Product productById = null;
+		
+		//상품 목록(listOfProducts) 반복
+		for(Product pro : listOfProducts) {
+			if(pro.getProductId().equals(productId)) {
+				productById = pro;
+				break;
+			}
+		}
+		return productById;
+	}
 }
