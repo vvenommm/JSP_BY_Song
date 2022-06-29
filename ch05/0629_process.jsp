@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Title</title>
+<title>Implicit Object(내장 객체)</title>
 </head>
 <body>
 
@@ -15,6 +15,10 @@
 	%>
 <!-- 	표현문 -->
 	<p>이름 : <%=name %></p>
-	
+	요청 정보 길이 : <%=request.getContentLength() %><br />
+	클라이언트 전송 방식 : <%=request.getMethod() %><br />
+	요청 URI : <%=request.getRequestURI() %><br />
+	서버 이름 : <%=request.getServerName() %><br />
+	서버 포트 : <%=request.getServerPort() %><br />
 </body>
 </html>
