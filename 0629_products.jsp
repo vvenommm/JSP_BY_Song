@@ -45,12 +45,14 @@
 						<h3><%=product.getpName() %></h3>
 						<p><%=product.getDescription() %></p>
 						<p><%=product.getUnitPrice() %>원</p>
+						<p><a href="product.jsp?id=<%=product.getProductId() %> class="btn btn-secondary" role="button">??</a></p>
 					</div>						
 				<%
 					}
 				%>
 			</div>
 		</div>
+<!-- 		상품목록 끝 -------------------------------------------------- -->
 	
 	<jsp:include page="footer.jsp" />
 </body>
