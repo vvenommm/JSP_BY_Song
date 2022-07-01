@@ -72,9 +72,16 @@
 			<div class="form-group row">
 				<label class="col-sm-2">재고 상태</label>
 				<div class="col-sm-5">
-					<input type="radio" name="condition" value="New" />신규
-					<input type="radio" name="condition" value="Old" />중고
-					<input type="radio" name="condition" value="Refurbished" />재생
+					<input type="radio" name="condition" value="New" /> 신규
+					<input type="radio" name="condition" value="Old" /> 중고
+					<input type="radio" name="condition" value="Refurbished" /> 재생
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<div class="col-sm-offset-2 col-sm-10">
+					<input type="submit" class="btn btn-privary" value="등록" />
+					<button type="button" class="btn btn-privary" onclick="javascript:lacation.href='products.jsp'">목록보기</button>
 				</div>
 			</div>
 			
