@@ -8,8 +8,10 @@
 
 <%
 	//ProductRepository productDAO = new ProductRepository(); //10번 줄과 같은 의미
+	ProductRepository productDAO = ProductRepository.getInstance();
+	
 %>
-<jsp:useBean id="productDAO" class="kr.or.ddit.dao.ProductRepository" scope="session"/>
+<%-- <jsp:useBean id="productDAO" class="kr.or.ddit.dao.ProductRepository" scope="session"/> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,6 +52,11 @@
 				<%
 					}
 				%>
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-offset-2 col-sm-10">
+					<input type="button" class="btn btn-privary" value="상품등록" onclick="javascript:location.href='addProduct.jsp'"/>
+				</div>
 			</div>
 		</div>
 <!-- 		상품목록 끝 -------------------------------------------------- -->
