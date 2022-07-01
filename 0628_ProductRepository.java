@@ -10,6 +10,11 @@ public class ProductRepository {
 	//상품 목록 저장할 리스트 작성
 	private List<Product> listOfProducts = new ArrayList<Product>();
 	
+	//싱글톤
+	private static ProductRepository instance = new ProductRepository();
+//	private ProductRepository() {} 22번 줄에 이미 있어서 주석처리
+	public static ProductRepository getInstance() {return instance;}
+	
 	/*
 		기본 생성자
 		3개의 상품 정보 설정 후 Product 객체만 담는 List인 listOfProducts 변수에 저장
@@ -112,5 +117,11 @@ public class ProductRepository {
 			}
 		}
 		return productById;
+	}
+	
+	//새로운 상품 등록(Product 타입의 파라미터를 Product 타입(dto, vo)의 매개변수로 받음
+	public void addProduct(Product product) {
+		//기존의 상품 목록에 추가
+		listOfProducts.add(product);
 	}
 }
