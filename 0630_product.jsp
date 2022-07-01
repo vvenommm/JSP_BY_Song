@@ -2,8 +2,9 @@
 <%@ page import="kr.or.ddit.dao.ProductRepository" %>
 <%
 	//ProductRepository productDAO = new ProductRepository();
+	ProductRepository productDAO = ProductRepository.getInstance();
 %>
-<jsp:useBean id="productDAO" class="kr.or.ddit.dao.ProductRepository" scope="session" />
+<%-- <jsp:useBean id="productDAO" class="kr.or.ddit.dao.ProductRepository" scope="session" /> --%>
 <jsp:useBean id="product" class="kr.or.ddit.dto.Product" scope="session" />
 <!DOCTYPE html>
 <html>
