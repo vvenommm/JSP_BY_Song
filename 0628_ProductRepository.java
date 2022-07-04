@@ -22,6 +22,7 @@ public class ProductRepository {
 
 	public ProductRepository() {
 		
+		//자바빈 클래스
 		//생성자(상품 아이디, 상품명, 상품 가격 초기화)
 		Product phone = new Product("P1234", "iPhone 6s", 800000);
 		
@@ -39,6 +40,9 @@ public class ProductRepository {
 		
 		//신상품 or 중고품 or 재생품
 		phone.setCondition("New");
+		
+		//이미지 파일명
+		phone.setFilename("P1234.jpg");
 		
 		/////////////////////////////////////////휴대폰 등록 끝////////////////////////////////////////////
 		
@@ -65,6 +69,9 @@ public class ProductRepository {
 		//신상품 or 중고품 or 재생품
 		notebook.setCondition("Refurbished");
 		
+		//이미지 파일명
+		notebook.setFilename("P1235.jpg");
+		
 		/////////////////////////////////////////노트북 등록 끝////////////////////////////////////////////
 		
 		
@@ -89,6 +96,9 @@ public class ProductRepository {
 		
 		//신상품 or 중고품 or 재생품
 		tablet.setCondition("Old");
+		
+		//이미지 파일명
+		tablet.setFilename("P1236.jpg");
 		
 		/////////////////////////////////////////태블릿 등록 끝////////////////////////////////////////////
 		
