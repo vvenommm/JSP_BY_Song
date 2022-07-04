@@ -10,8 +10,8 @@
 <html>
 <head>
 <title>상품 상세 정보</title>
-<link rel="stylesheet"
-   href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
 </head>
 <body>
 	<%
@@ -28,6 +28,10 @@
 		<div class="container">
 <!-- 		1건의 상품. 1행 -->
 			<div class="row">
+				<!-- 이미지 div -->
+				<div class="col-md-5">
+					<img src="/images/<%=product.getFilename() %>" alt="<%=product.getpName() %>" title="<%=product.getpName() %>" style="width:100%;" />
+				</div>
 <!-- 				6 크기의 1열 -->
 				<div class="col-md-6">
 					<h3><%=product.getpName() %></h3>
