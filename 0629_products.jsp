@@ -16,8 +16,8 @@
 <html>
 <head>
 <title>상품 목록</title>
-<link rel="stylesheet"
-   href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
 </head>
 <body>
 <!-- 	include 액션 태그 -->
@@ -44,6 +44,7 @@
 				%>
 <!-- 					열별 처리 -->
 					<div class="col-md-4">
+						<img src="/images/<%=product.getFilename() %>" style="width:100%;" alt="<%=product.getpName() %>" title="<%=product.getpName() %>"  />
 						<h3><%=product.getpName() %></h3>
 						<p><%=product.getDescription() %></p>
 						<p><%=product.getUnitPrice() %>원</p>
