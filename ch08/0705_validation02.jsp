@@ -22,9 +22,5 @@
 		<p>비밀번호 : <input type="password" name="pass" /></p>
 		<p><input type="button" value="전송" onclick="checkLogin()"/></p>
 	</form>
-	<%
-		
-	%>
-	
 </body>
 </html>
