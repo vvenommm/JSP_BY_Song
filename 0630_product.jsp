@@ -45,7 +45,7 @@
 					<p><b>제조사 : </b><%=product.getManufacturer() %></p>
 					<p><b>분류 : </b><%=product.getCategory() %></p>
 					<p><b>재고 수 : </b><%=product.getUnitsInStock() %></p>
-					<h4><%=product.getUnitPrice() %></h4>
+					<h4><%=product.getUnitPrice() %>원</h4>
 					<p><a href="#" class="btn btn-info">상품 주문&raquo;</a>
 					<a href="products.jsp" class="btn btn-secondary">상품 목록&raquo;</a>
 					
