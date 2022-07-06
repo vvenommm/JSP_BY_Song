@@ -9,7 +9,7 @@ public class Product implements Serializable{
 	//멤버변수(필드)
 	private String productId; //상품 아이디
 	private String pName; //상품명
-	private Integer unitPrice; //상품 가격
+	private double unitPrice; //상품 가격
 	private String description; //상품 설명
 	private String manufacturer; //제조사
 	private String category; //분류
@@ -21,7 +21,7 @@ public class Product implements Serializable{
 	public Product() {}
 
 	//생성자(상품 아이디, 상품명, 상품 가격 초기화)
-	public Product(String productId, String pName, Integer unitPrice) {
+	public Product(String productId, String pName, double unitPrice) {
 		this.productId = productId;
 		this.pName = pName;
 		this.unitPrice = unitPrice;
@@ -45,11 +45,11 @@ public class Product implements Serializable{
 		this.pName = pName;
 	}
 
-	public Integer getUnitPrice() {
+	public double getUnitPrice() {
 		return unitPrice;
 	}
 
-	public void setUnitPrice(Integer unitPrice) {
+	public void setUnitPrice(double unitPrice) {
 		this.unitPrice = unitPrice;
 	}
 
