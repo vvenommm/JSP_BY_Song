@@ -33,7 +33,7 @@
 	String condition    = "";
 	
 	//unitPrice는 문자형 데이터. -> 숫자형으로 변환
-	Integer price = 0;
+	double price = 0;
 	long stock = 0L;
 	
 	String fileFieldName ="";
@@ -60,7 +60,7 @@
 		         if(unitPrice.isEmpty()){
 		            price = 0;
 		         }else{//비어있지 않다면..
-		            price = Integer.valueOf(unitPrice);
+		            price = Double.parseDouble(unitPrice);
 		         }
 		      }else if(name.equals("description")){
 		         description  = item.getString("UTF-8");
