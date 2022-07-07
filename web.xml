@@ -1,24 +1,66 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%@ page errorPage="./viewErrorMessage.jsp" %>
-<!DOCTYPE html>
-<html>
-<head>
-<title>목적 : 파라미터 출력</title>
-</head>
-<body>
-<!-- readParameterNoErrorPage.jsp?name=후후리 -->
-<!-- 클라이언트(크롬), 서버(톰캣) -->
-<!-- toUpperCase() 대문자로 변환 -->
-<!-- /readParameterNoErrorPage.jsp => 오류 -> null을 대문자로 변환불가 -->
-name 파라미터 값 : <%=request.getParameter("name").toUpperCase()%>
-<!--
-	오류 처리 방법
-	1. page 디렉티브의 errorPage 속성에 지정한 오류 페이지 (우선순위1)
-		- 전용 오류 페이지가 필요한 경우
-	2. web.xml의 exception-type (우선순위2)
-		- 별도로 처리해야 하는 exception(심각할 때..)
-	3. web.xml의 error-code (우선순위3)
-		- 범용적인(자주 발생) 오류 코드(404, 500)
--->
-</body>
-</html>
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>JSPBook</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+<!--   404 : page not found. URL에 해당되는 jsp가 없음 -->
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/error/error404.jsp</location>
+  </error-page>
+<!--   프로그래밍 오류 -->
+	<error-page>
+	  	<error-code>500</error-code>
+	  	<location>/error/error500.jsp</location>
+	</error-page>
+<!-- 	exception 타입별 오류 페이지 지정 -->
+	<error-page>
+		<exception-type>java.lang.NullPointerException</exception-type>
+		<location>/error/errorNullPointer.jsp</location>
+	</error-page>
+	
+  <security-role>
+  	<role-name>admin</role-name>
+  </security-role>
+  <security-constraint>
+  	<display-name>LJH Market Security</display-name>
+<!--   	웹 자원에 대한 약속 목록 -->
+	<web-resource-collection>
+<!-- 		프로젝트명 -->
+		<web-resource-name>JSPBook</web-resource-name>
+<!-- 			접근 제한을 할 대상 /ch10/* => ch10폴더 하위의 모든 jsp 페이지 접근 시 접근 제한 -->
+<!-- 		<url-pattern>/ch10/security01.jsp</url-pattern> -->
+<!-- 		<url-pattern>/ch10/security02.jsp</url-pattern> -->
+		<url-pattern>/addProduct.jsp</url-pattern> <!-- 목적지. 상품 등록하려면 admin이어야 가능 -->
+<!-- 			GET방식으로 접근 시 제한 -->
+		<http-method>GET</http-method>
+	</web-resource-collection>
+	<auth-constraint>
+		<description></description>
+<!-- 			role1 권한을 가진 role1, both 사용자의 경우 아이디와 비번 맞게 입력 시 security01.jsp로 접근 가능 -->
+<!-- 		<role-name>role1</role-name> -->
+		<role-name>admin</role-name> <!-- 통과 가능한 사람이 누구인지 서술 -->
+	</auth-constraint>
+  </security-constraint>
+<!--   그러면 로그인 페이지는? -->
+	<login-config>
+<!-- 		<auth-method>BASIC</auth-method> -->
+	<auth-method>FORM</auth-method> <!-- 일반 폼을 쓰겠다는 뜻 -->
+	<!-- FORM 인증 처리 기법 설정 -->
+	<form-login-config>
+		<!-- 로그인 페이지는? -->
+<!-- 		<form-login-page>/ch10/login.jsp</form-login-page> -->
+		<form-login-page>/login.jsp</form-login-page>
+		<!-- 로그인 실패 시 보여줄 페이지는? -->
+<!-- 		<form-error-page>/ch10/login_failed.jsp</form-error-page> -->
+		<form-error-page>/login_failed.jsp</form-error-page>
+	</form-login-config>
+	</login-config>
+</web-app>
