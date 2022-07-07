@@ -35,9 +35,12 @@
   <role rolename="tomcat"/>
 <!-- 	role1 -> 사용자 -->
   <role rolename="role1"/>
+<!-- 	admin 역할 권한 추가 -->
+  <role rolename="admin" />
 <!--   사용자의 id, pw, role(역할/권한) 설정 -->
   <user username="tomcat" password="tomcat1234" roles="tomcat"/>
   <user username="both" password="both1234" roles="tomcat,role1"/>
   <user username="role1" password="role1234" roles="role1"/>
+  <user username="admin" password="admin1234" roles="admin"/>
 
 </tomcat-users>
