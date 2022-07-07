@@ -14,9 +14,6 @@
 		<p>비밀번호 : <input type="password" name="j_password" /></p>
 		<p><input type="submit" value="전송" /></p>
 	</form>
-	<%
-		
-	%>
 	
 </body>
 </html>
