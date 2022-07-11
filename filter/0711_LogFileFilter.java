@@ -45,21 +45,21 @@ public class LogFileFilter implements Filter {
 			throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		
-		System.out.println("접속한 클라이언트 IP : " + request.getRemoteAddr());
+		writer.println("접속한 클라이언트 IP : " + request.getRemoteAddr());
 		
 		//시스템 현재 시간(시작 시간)
 		long start = System.currentTimeMillis();
-		System.out.println("접근한 URL 경로 : " + getURLPath(request));
-		System.out.println("요청 처리 시작 시각 : " + getCurrentTime());
+		writer.println("접근한 URL 경로 : " + getURLPath(request));
+		writer.println("요청 처리 시작 시각 : " + getCurrentTime());
 		
 		//필터가 연속적으로 있다면 다음 필터로 제어 및 요청/응답 정보를 넘겨줌
 		chain.doFilter(request, response);
 		
 		//시스템 현재 시간(종료 시간)
 		long end = System.currentTimeMillis();
-		System.out.println("요청 처리 조욜 시각 : " + getCurrentTime());
-		System.out.println("요청 처리 소요 시간 : " + (end-start) + "ms"); //1000분의 1초 단위
-		System.out.println("=========================================");
+		writer.println("요청 처리 조욜 시각 : " + getCurrentTime());
+		writer.println("요청 처리 소요 시간 : " + (end-start) + "ms"); //1000분의 1초 단위
+		writer.println("=========================================");
 		
 	}
 
@@ -87,10 +87,10 @@ public class LogFileFilter implements Filter {
 			if(request instanceof HttpServletRequest) {
 				req = (HttpServletRequest)request;
 				currentPath = req.getRequestURI(); //http://localhost/ch03/readParameterNoErrorPage.jsp
-				System.out.println("currentPath : " + currentPath);
+				writer.println("currentPath : " + currentPath);
 				
 				queryString = req.getQueryString(); // name=개똥이
-				System.out.println("queryString : " + queryString);
+				writer.println("queryString : " + queryString);
 				
 				queryString = queryString == null ? "" : "?" + queryString; //?name=개똥이
 			}
