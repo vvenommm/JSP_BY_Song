@@ -1,6 +1,9 @@
 package filter;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -8,26 +11,71 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
 
 //필터 클래스
 public class LogFilter implements Filter{
 
+	//필터 시작. 초기화
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
+		// TODO Auto-generated method stub
+		System.out.println("WebMarket 초기화...");
+		
+	}
+	
+	//필터 실행
+	@Override
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
+		// TODO Auto-generated method stub
+		System.out.println("접속한 클라이언트 IP : " + request.getRemoteAddr());
+		System.out.println("접근한 URL 경로 : " + getURLPath(request));
+		System.out.println("요청 처리 시작 시각 : " + );
+		
+	}
+	
+	//필터 종료
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
-		// TODO Auto-generated method stub
+	
+	//http://localhost/ch03/readParameterNoErrorPage.jsp?name=개똥이
+	private String getURLPath(ServletRequest request) {
+		//HttpServletRequest(자식)는 ServletRequest(부모)를 상속받음
+		HttpServletRequest req;
 		
-	}
-
-	@Override
-	public void init(FilterConfig filterConfig) throws ServletException {
-		// TODO Auto-generated method stub
+		//currentPath : URL 경로 => http://localhost/ch03/readParameterNoErrorPage.jsp
+		String currentPath = "";
+		
+		//queryString : 요청 파라미터 => name=개똥이
+		String queryString ="";
+		
+		//instanceOf 연산자는 객체가 어떤 클래스인지, 어떤 클래스를 상속 받았는지 확인
+		if(request instanceof HttpServletRequest) {
+			req = (HttpServletRequest)request;
+			currentPath = req.getRequestURI(); //http://localhost/ch03/readParameterNoErrorPage.jsp
+			queryString = req.getQueryString(); // name=개똥이
+			queryString = queryString == null ? "" : "?" + queryString; //?name=개똥이
+		}
+		
+		return currentPath + queryString;
+		
+	}//end getURLPath()
+	
+	//현재 시간을 얻어오는 메소드
+	private String getCurrentTime() {
+		//포맷 예) 2022/07/11 10:35:12
+		DateFormat formatter = new SimpleDateFormat("yyyy/mm/dd HH:mm:ss");
+		
+		//calendar 객체 생성(싱글톤 : 메모리에 1번 생성하고 전역변수처럼 사용할 수 있음)
+		Calendar calendar = Calendar.getInstance();
+		
+		//톰캣 서버에서 제공해주는 시스템 현재 시간을 구해서 캘린더 객체에 세팅
+		calendar.setTimeInMillis(System.currentTimeMillis());
+		return formatter.format(calendar.getTime());
 		
 	}
 
