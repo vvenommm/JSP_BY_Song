@@ -12,12 +12,12 @@ function backToList(){
 	lacation.href='products.jsp'
 }
 </script>
-<title>Title</title>
+<title>상품 등록</title>
 </head>
 <body>
 	<fmt:setLocale value='<%=request.getParameter("language") %>' />
 	<fmt:bundle basename="bundle.message">
-	<jsp:include page="menu.jsp" />
+	<jsp:include page="./menu.jsp" />
 	
 	<div class = "jumbotron">
 	<!-- 		container : 이 안에 내용있다 -->
@@ -30,7 +30,7 @@ function backToList(){
 	<!-- 		내용 책203쪽-->
 	<div class="container">
 		<div class="text-right">
-			<a href="?language=ko">Korean</a>|<a href="?language=en">English</a>
+			<a href="?language=ko">Korean</a>|<a href="?language=en">English</a><br>
 		</div>
 		<form name="newProduct" action="processAddProduct.jsp" class="form-horizontal" method="post" enctype="multipart/form-data">
 			<div class="form-group row">
@@ -101,10 +101,12 @@ function backToList(){
 			<div class="form-group row">
 				<div class="col-sm-offset-2 col-sm-10">
 					<input type="button" class="btn btn-privary" value="<fmt:message key="button" />" onclick="CheckAddProduct()" />
-					<button type="button" class="btn btn-privary" onclick="backToList()"><fmt:message key="list" /></button>
+					<button type="button" class="btn btn-privary" onclick="javascript:location.href='products.jsp'"><fmt:message key="list" /></button>
 				</div>
 			</div>
-			
+			<div class="text-right">
+				<a href="logout.jsp" class="btn btn-sm btn-success pull-right">Logout</a>
+			</div>
 		</form>
 	</div>
 	<!-- 	--------------------------------상품등록끄읕-------------------------------- -->
