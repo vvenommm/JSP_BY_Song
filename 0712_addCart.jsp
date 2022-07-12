@@ -2,12 +2,6 @@
 <%@page import="kr.or.ddit.dto.Product"%>
 <%@page import="kr.or.ddit.dao.ProductRepository"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<title>Cart</title>
-</head>
-<body>
 
 	<%
 		//from product.jsp
@@ -61,10 +55,10 @@
 		Product goodsQnt = new Product();
 		
 		for(int i = 0; i < list.size(); i++){
-			goodsQnt = list.get(i);
-			if(goodsQnt.getProductId().equals(id)){
+// 			goodsQnt = list.get(i);
+			if(list.get(i).getProductId().equals(id)){
 				cnt++;
-				goodsQnt.setQuantity(goodsQnt.getQuantity()+1);
+				list.get(i).setQuantity(list.get(i).getQuantity()+1);
 			}
 		}
 		
@@ -84,6 +78,3 @@
 		//response.sendRedirect("product.jsp?id=" + id);
 	
 	%>
-	
-</body>
-</html>
