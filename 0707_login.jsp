@@ -20,7 +20,7 @@
 		<div class="col-md-4 col-md-offset-4">
 			<h3 class="form-signin-heading">Please sign in</h3>
 				<%
-					//?error = 1
+					//login.jsp?error = 1
 					String error = request.getParameter("error");
 					if(error != null){
 						//오류 발생 시
