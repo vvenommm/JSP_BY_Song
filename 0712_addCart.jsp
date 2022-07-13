@@ -75,6 +75,6 @@
 			out.print("pd : " + pd.toString() + "<br /><hr />");
 		}
 
-		//response.sendRedirect("product.jsp?id=" + id);
+		response.sendRedirect("product.jsp?id=" + id);
 	
 	%>
