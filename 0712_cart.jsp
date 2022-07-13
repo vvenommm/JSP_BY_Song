@@ -43,9 +43,9 @@
 <!-- 	장바구니 출력 시작 -->
 <!-- 	padding-top : 영역의 위쪽 여백 50px -->
 	<div style="padding-top : 50px;">
-		<table class="table table-hover">
+		<table class="table table-hover" width="100%">
 			<tr>
-				<th>상품</th><th>가격</th><th>수량</th><th>소계</th><ht>비고</ht>
+				<th>상품</th><th>가격</th><th>수량</th><th>소계</th><th>비고</th>
 			</tr>
 			<%
 				//금액 누적하는 변수
@@ -53,22 +53,37 @@
 				//addCart.jsp의 session.setAttribute("cartlist", list);
 				ArrayList<Product> cartlist = (ArrayList<Product>) session.getAttribute("cartlist");
 				
-				for(Product product : cartlist){
-					//금액 = 가격*수량
-					double total = product.getUnitPrice() * product.getQuantity();
-					sum = sum + total;
+				//장바구니가 비었다면
+				if(cartlist == null){
+			%>
+			<tr style="text-align:center;">
+				<td colspan="5">장바구니가 비어있습니다.</td>
+			</tr>
+			<%
+				}else{
+				
+					for(Product product : cartlist){
+						//금액 = 가격*수량
+						double total = product.getUnitPrice() * product.getQuantity();
+						BigDecimal big_total = new BigDecimal(total);
+						
+						//금액 누적
+						sum = sum + total;
 			%>
 			<tr>
 				<td><%=product.getProductId() %> - <%=product.getpName() %></td>
 				<td><%=product.getUnitPrice()%>></td>
 				<td><%=product.getQuantity() %></td>
-				<td><%=total %></td>
+				<td><%=big_total %></td>
 				<td>
 					<a href="removeCart.jsp?id=<%=product.getProductId() %>" class="badge badge-danger">삭제</a>
 				</td>
 			</tr>
 			<%
 				}
+			%>
+			<%
+				}//end if
 				
 				//double 지수형태 알파벳 숫자를 원래 숫자로 바꿈
 				BigDecimal big = new BigDecimal(sum);
@@ -80,6 +95,7 @@
 				<th><%=big %></th>
 				<th></th>
 			</tr>
+			
 		</table>
 		<a href="products.jsp" class="btn btn-secondary">&laquo;쇼핑 계속하기</a>
 	</div>
