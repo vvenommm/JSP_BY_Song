@@ -1,3 +1,4 @@
+<%@page import="java.math.BigDecimal"%>
 <%@page import="kr.or.ddit.dto.Product"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
@@ -55,6 +56,7 @@
 				for(Product product : cartlist){
 					//금액 = 가격*수량
 					double total = product.getUnitPrice() * product.getQuantity();
+					sum = sum + total;
 			%>
 			<tr>
 				<td><%=product.getProductId() %> - <%=product.getpName() %></td>
@@ -67,15 +69,19 @@
 			</tr>
 			<%
 				}
+				
+				//double 지수형태 알파벳 숫자를 원래 숫자로 바꿈
+				BigDecimal big = new BigDecimal(sum);
 			%>
 			<tr>
 				<th></th>
 				<th></th>
-				<th></th>
-				<th></th>
+				<th>총액</th>
+				<th><%=big %></th>
 				<th></th>
 			</tr>
 		</table>
+		<a href="products.jsp" class="btn btn-secondary">&laquo;쇼핑 계속하기</a>
 	</div>
 	
 <!-- 	장바구니 출력 끄읕 -->
