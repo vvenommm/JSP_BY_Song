@@ -10,4 +10,15 @@
 		Cookie country = new Cookie("Shipping_country", URLEncoder.encode(request.getParameter("country"), "UTF-8"));
 		Cookie zipCode = new Cookie("Shipping_zipCode", URLEncoder.encode(request.getParameter("zipCode"), "UTF-8"));
 		Cookie addressName = new Cookie("Shipping_addressName", URLEncoder.encode(request.getParameter("addressName"), "UTF-8"));
+		
+		//쿠키 유효 기간을 1일로 설정
+		cartId.setMaxAge(24*60*60);
+		name.setMaxAge(24*60*60);
+		shippingDate.setMaxAge(24*60*60);
+		country.setMaxAge(24*60*60);
+		zipCode.setMaxAge(24*60*60);
+		addressName.setMaxAge(24*60*60);
+	
+		response.sendRedirect("orderConfirmation.jsp");
+		
 	%>
