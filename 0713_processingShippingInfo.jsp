@@ -18,7 +18,16 @@
 		country.setMaxAge(24*60*60);
 		zipCode.setMaxAge(24*60*60);
 		addressName.setMaxAge(24*60*60);
+		
+		//생성된 쿠키 등록
+		response.addCookie(cartId);
+		response.addCookie(name);
+		response.addCookie(shippingDate);
+		response.addCookie(country);
+		response.addCookie(zipCode);
+		response.addCookie(addressName);
 	
+		//쿠키가 있다면 재요청
 		response.sendRedirect("orderConfirmation.jsp");
 		
 	%>
